@@ -2,14 +2,13 @@ const ROCK = 0;
 const PAPER = 1;
 const SCISSORS = 2;
 
-const VILLAIN_STRATEGY = [0.5, 0.3, 0.2]
-
 class RPSSolver {
-  constructor(villainStrategy) {
+  constructor(villainStrategy, setRegretSum) {
     this.strategy = [0, 0, 0];
     this.regretSum = [0, 0, 0];
     this.strategySum = [0, 0, 0];
     this.villainStrategy = villainStrategy;
+    this.setRegretSum = setRegretSum.bind(this)
   }
 
   getStrategy() {
@@ -48,7 +47,7 @@ class RPSSolver {
     for (let i = 0; i < iterations; i++) {
       strategy = this.getStrategy();
       heroAction = this.getAction(strategy);
-      villainAction = this.getAction(VILLAIN_STRATEGY);
+      villainAction = this.getAction(this.villainStrategy);
 
       actionUtility[villainAction] = 0;
       actionUtility[villainAction === 2 ? 0 : villainAction + 1] = 1;
@@ -56,6 +55,7 @@ class RPSSolver {
 
       for (let j = 0; j < 3; j++) {
         this.regretSum[j] += actionUtility[j] - actionUtility[heroAction];
+        if( i % 100 === 0) this.setRegretSum([...this.regretSum]);
       }
     }
   }
@@ -72,4 +72,4 @@ class RPSSolver {
   }
 };
 
-
+export default RPSSolver;
