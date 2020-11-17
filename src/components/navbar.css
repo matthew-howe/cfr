@@ -10,3 +10,11 @@
   padding: 1em;
   margin: 0.25em;
 }
+
+.nav-btn:hover {
+  background: orange;
+}
+
+.nav-selected {
+  background: gold;
+}

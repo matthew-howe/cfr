@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { updateRegrets } from './store';
 import VillainStratForm from './components/villStratForm';
