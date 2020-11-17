@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/github.io/cfr-solvers/static/css/main.71783c0c.chunk.css",
+    "main.js": "/github.io/cfr-solvers/static/js/main.04b6beca.chunk.js",
+    "main.js.map": "/github.io/cfr-solvers/static/js/main.04b6beca.chunk.js.map",
+    "runtime-main.js": "/github.io/cfr-solvers/static/js/runtime-main.7c4e8c1f.js",
+    "runtime-main.js.map": "/github.io/cfr-solvers/static/js/runtime-main.7c4e8c1f.js.map",
+    "static/js/2.9ec7cb29.chunk.js": "/github.io/cfr-solvers/static/js/2.9ec7cb29.chunk.js",
+    "static/js/2.9ec7cb29.chunk.js.map": "/github.io/cfr-solvers/static/js/2.9ec7cb29.chunk.js.map",
+    "static/js/3.b8dd2af1.chunk.js": "/github.io/cfr-solvers/static/js/3.b8dd2af1.chunk.js",
+    "static/js/3.b8dd2af1.chunk.js.map": "/github.io/cfr-solvers/static/js/3.b8dd2af1.chunk.js.map",
+    "index.html": "/github.io/cfr-solvers/index.html",
+    "static/css/main.71783c0c.chunk.css.map": "/github.io/cfr-solvers/static/css/main.71783c0c.chunk.css.map",
+    "static/js/2.9ec7cb29.chunk.js.LICENSE.txt": "/github.io/cfr-solvers/static/js/2.9ec7cb29.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7c4e8c1f.js",
+    "static/js/2.9ec7cb29.chunk.js",
+    "static/css/main.71783c0c.chunk.css",
+    "static/js/main.04b6beca.chunk.js"
+  ]
+}
