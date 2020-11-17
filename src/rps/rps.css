@@ -1,0 +1,37 @@
+input {
+  text-align: center;
+}
+
+#rfreq {
+  background: blue;
+  color: white;
+}
+
+#pfreq {
+  background: red;
+  color: white;
+}
+
+#sfreq {
+  background: gold;
+  color: white;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#rps-iterations {
+  padding: 0.5em 2em 0em 2em;
+}
+
+#rps-run-btn {
+  margin: 0.5em;
+  width: 7em;
+}
+
+.rps-form {
+  padding: 0.5em;
+}
