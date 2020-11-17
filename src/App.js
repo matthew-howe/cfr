@@ -6,11 +6,12 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  let [selected, setSelected] = useState(0);
+  let [selected, setSelected] = useState(1);
   let solvers = [
     <RPSSolverInterface />, <KuhnSolverInterface />
   ]
   let currentSolver = solvers[selected % solvers.length];
+
 
   return (
     <div className="App">
