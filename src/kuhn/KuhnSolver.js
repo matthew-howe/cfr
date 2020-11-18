@@ -18,10 +18,18 @@ class InformationSet {
   }
 
   getStrategy(reachProb) {
-    let strategy = Math.max(0, this.cumulativeRegrets);
-    let norm = this.normalize(strategy);
-    let reachStrat = 
+    let strategy = this.cumulativeRegrets.map(el => el > 0 ? el : 0);
+    let normlizedStrat = this.normalize(strategy);
+    let weightedStrat = normalizedStrat.map(el => el * reachProb);
+    for (let i = 0; i < 2; i++) {
+      this.strategySum[i] += weightedStrat[i];
+    }
+    
+    return weightedStrat;
+  }
 
+  getAvgStrategy() {
+    return this.normalize(this.strategySum.slice());
   }
 
 }
