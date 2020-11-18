@@ -38,6 +38,26 @@ class KuhnSolver {
   hello() {
     return 'Hello World'
   }
+
+  isTerminal(history) {
+    return ['BC', 'BB', 'CC', 'CBB', 'CBC'].includes(history);
+  }
+
+  getPayoff(history, cards) {
+    if (['BC', 'CBC'].includes(history)) {
+      return +1;
+    } else {
+      let payoff = history.includes('B') ? 2 : 1;
+      let activePlayer = history.length % 2;
+      let playerCard = cards[activePlayer];
+      let villCard = cards[(activePlayer + 1) % 2];
+      if (playerCard === 'K' || villCard === 'J') {
+        return payoff;
+      } else {
+        return -payoff;
+      }
+    }
+  }
 }
 
 export default KuhnSolver;
