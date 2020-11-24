@@ -7,20 +7,15 @@ import RPSSolver from './RPSSolverSelfTrain';
 
 import './rps.css';
 
-let _go = true;
-let _regrets = [0, 0, 0]
 
 function RPSSolverInterface({ updateRegrets }) {
   let [villStrat, setVillStrat] = useState([.3333333, .3333333, .333333])
-  let [regretsHistory, setRegretsHistory] = useState([]);
   let [iterations, setIterations] = useState(1000);
   let [shouldRun, setShouldRun] = useState(false);
   let [monkey, rerender] = useState(false);
   
-  let i = 0;
   let regretMap = {};
   const setRegretSum = regrets => {
-    i++;
     updateRegrets(regrets);
   }
   let avgStrat = [0,0,0]
