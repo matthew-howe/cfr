@@ -9,11 +9,50 @@ function KuhnSolverInterface() {
 
   let [iterations, setIterations] = useState(1000);
 
+
+  let sorteddivs = [];
   let solver = new KuhnSolver();
-  solver.train(10000)
+  solver.train(iterations)
+  let results = [];
   for (let key in solver.infoSetMap) {
-    console.log(`${key}          ${solver.infoSetMap[key].getAvgStrategy()}`);
+    let b = solver.infoSetMap[key].getAvgStrategy()[0].toFixed(2)
+    let c = solver.infoSetMap[key].getAvgStrategy()[1].toFixed(2)
+
+    
+    results.push(
+      {
+        html: (
+      <div>
+        {key} &emsp;&emsp;&emsp;           {b} &emsp;&emsp;&emsp;   {c} 
+      </div>
+        ),
+        card: key}
+    )
   }
+
+  results = results.sort((a, b) => {
+    if (a.card.length < b.card.length) return -1
+    else if (b.card.length < a.card.length) return 1
+
+
+    else if (a.card < b.card) return -1
+    else if (b.card < a.card) return 1
+    else return 0;
+  })
+
+
+  for (let i = 0; i < results.length; i++) sorteddivs.push(results[i].html);
+
+  sorteddivs.unshift(<div>CARDS &emsp; BET/CALL &emsp; CHECK/FOLD</div>)
+  sorteddivs.unshift(<h4> FIRST ACTION</h4>)
+  sorteddivs.splice(5,0, <h4> SECOND ACTION </h4>)
+  sorteddivs.splice(6,0, <div>CARDS &emsp; BET/CALL &emsp; CHECK/FOLD</div>)
+
+          
+  sorteddivs.splice(13,0, <h4> THIRD ACTION </h4>)
+  sorteddivs.splice(14,0, <div>CARDS &emsp; BET/CALL &emsp; CHECK/FOLD</div>)
+
+
 
   const handleChange = evt => {
     setIterations(evt.target.value);
@@ -51,6 +90,9 @@ function KuhnSolverInterface() {
         </label>
       </form>
           </div>
+        </div>
+        <div>
+          {sorteddivs}
         </div>
       </div>
   )
