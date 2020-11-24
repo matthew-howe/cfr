@@ -77,15 +77,12 @@ class KuhnSolver {
 
     let myCard = cards[activePlayer];
     let infoSet = this.getInformationSet(myCard + history);
-
     let strategy = infoSet.getStrategy(reachProbs[activePlayer]);
-
     let villain = (activePlayer + 1) % 2;
     let counterfactualVals = [0, 0];
 
     for (let i = 0; i < 2; i++) {
       let actionProb = strategy[i];
-
       let newReachProbs = reachProbs.slice();
 
       // compute new reach probabilities after this action
@@ -105,6 +102,7 @@ class KuhnSolver {
     let nodeValue = counterfactualVals.reduce((acc, el, idx) => {
       return acc +(el * strategy[idx]);
     }, 0);
+
     for (let k = 0; k < 2; k++) {
       let val = counterfactualVals[k] - nodeValue;
       let val2;

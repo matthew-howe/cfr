@@ -2,13 +2,14 @@ import RPSSolverInterface from './rps';
 import KuhnSolverInterface from './kuhn';
 import Navbar from './components/navbar';
 import React, { useState } from 'react';
+import MWKuhnSolverInterface from './mwkuhn';
 
 import './App.css';
 
 function App() {
-  let [selected, setSelected] = useState(1);
+  let [selected, setSelected] = useState(2);
   let solvers = [
-    <RPSSolverInterface />, <KuhnSolverInterface />
+    <RPSSolverInterface />, <KuhnSolverInterface />, <MWKuhnSolverInterface />
   ]
   let currentSolver = solvers[selected % solvers.length];
 
