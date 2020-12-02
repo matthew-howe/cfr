@@ -2,6 +2,8 @@ const ROCK = 0;
 const PAPER = 1;
 const SCISSORS = 2;
 
+
+
 class RPSSolver {
   constructor(villainStrategy, setRegretSum) {
     this.strategy = [0, 0, 0];

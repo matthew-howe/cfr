@@ -1,7 +1,10 @@
+const Actions = ['B', 'C'];
+
 class InformationSet {
   constructor() {
     this.cumulativeRegrets = [0, 0];
     this.strategySum = [0, 0];
+    this.numActions = Actions.length;
   }
 
   normalize(strategy) {
@@ -12,6 +15,7 @@ class InformationSet {
         normalized[i] /= sum;
       }
     } else {
+      // console.log(this.cumulativeRegrets);
       normalized = [0.5, 0.5];
     }
     return normalized;
@@ -20,6 +24,7 @@ class InformationSet {
   getStrategy(reachProb) {
     let strategy = this.cumulativeRegrets.map(el => (el > 0 ? el : 0));
     let normalizedStrat = this.normalize(strategy);
+      
     let weightedStrat = normalizedStrat.map(el => el * reachProb);
     for (let i = 0; i < 2; i++) {
       this.strategySum[i] += weightedStrat[i];
@@ -109,6 +114,8 @@ class KuhnSolver {
       val2 = reachProbs[villain] * val;
       infoSet.cumulativeRegrets[k] += val2;
     }
+
+    // if (infoSet.cumulativeRegrets.every(el => el < 0)) console.log(infoSet, '\n', myCard + history);
     return nodeValue;
   }
 
