@@ -15,7 +15,6 @@ class InformationSet {
         normalized[i] /= sum;
       }
     } else {
-      // console.log(this.cumulativeRegrets);
       normalized = [0.5, 0.5];
     }
     return normalized;
@@ -82,12 +81,14 @@ class KuhnSolver {
 
     let myCard = cards[activePlayer];
     let infoSet = this.getInformationSet(myCard + history);
+
     let strategy = infoSet.getStrategy(reachProbs[activePlayer]);
     let villain = (activePlayer + 1) % 2;
     let counterfactualVals = [0, 0];
 
     for (let i = 0; i < 2; i++) {
       let actionProb = strategy[i];
+
       let newReachProbs = reachProbs.slice();
 
       // compute new reach probabilities after this action
@@ -109,13 +110,10 @@ class KuhnSolver {
     }, 0);
 
     for (let k = 0; k < 2; k++) {
-      let val = counterfactualVals[k] - nodeValue;
-      let val2;
-      val2 = reachProbs[villain] * val;
-      infoSet.cumulativeRegrets[k] += val2;
+      infoSet.cumulativeRegrets[k] += reachProbs[villain] * (counterfactualVals[k] - nodeValue)
     }
 
-    // if (infoSet.cumulativeRegrets.every(el => el < 0)) console.log(infoSet, '\n', myCard + history);
+    if (infoSet.cumulativeRegrets.every(el => el < 0)) console.log(infoSet, '\n', myCard + history);
     return nodeValue;
   }
 
@@ -145,5 +143,11 @@ class KuhnSolver {
     return shuffled.slice(0, size);
   }
 }
+
+const helloWorld = () => {
+  return new Array(5).fill('hello');
+}
+
+helloWorld();
 
 export default KuhnSolver;
